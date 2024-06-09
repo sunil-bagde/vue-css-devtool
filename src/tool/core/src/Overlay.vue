@@ -316,7 +316,7 @@ export default {
         <ul>
           <li v-for="classN in linkParams.className?.split(' ')">
 
-              <span>.{{ classN }}</span>
+              <span style="font-weight: 500; font-size: medium;">.{{ classN }}</span>
           </li>
           <li>
       </li>
