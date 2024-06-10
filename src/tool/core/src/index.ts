@@ -124,6 +124,7 @@ function getInspectorPath() {
 }
 
 export function normalizeComboKeyPrint(toggleComboKey: string) {
+  console.log(`toggleComboKey:`, toggleComboKey);
   return toggleComboKey.split('-').map(key => toggleComboKeysMap[key] || key[0].toUpperCase() + key.slice(1)).join(dim('+'))
 }
 
@@ -212,7 +213,7 @@ function VitePluginInspector(options: VitePluginInspectorOptions = DEFAULT_INSPE
         toggleComboKey && (server.printUrls = () => {
           const keys = normalizeComboKeyPrint(toggleComboKey)
           _printUrls()
-          console.log(`  ${green('➜')}  ${bold('Vue Inspector')}: ${green(`Press ${yellow(keys)} in App to toggle the Inspector`)}\n`)
+          console.log(`  ${green('➜')}  ${bold('Vue CSS Devtool')}: ${green(`Press ${yellow(keys)} in App to toggle the Inspector`)}\n`)
         })
       },
       transformIndexHtml(html) {

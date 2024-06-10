@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [vue(), CssInspect(
     {
         toggleButtonVisibility: "never",
+        toggleComboKey: "meta-shift",
     }
   )],
 })

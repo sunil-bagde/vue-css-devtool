@@ -18,7 +18,7 @@ export default (options: Options, nuxt: any) => {
     if (printed || !toggleComboKey)
       return
     const keys = normalizeComboKeyPrint(toggleComboKey)
-    console.log(`  ${'> Vue Inspector'}: ${green(`Press ${yellow(keys)} in App to toggle the Inspector`)}\n`)
+    console.log(`  ${'> Vue CSS Devtool'}: ${green(`Press ${yellow(keys)} in App to toggle the Inspector`)}\n`)
     printed = true
   })
 }
