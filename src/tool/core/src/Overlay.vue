@@ -1,6 +1,7 @@
 <script lang="ts">
 import inspectorOptions from "virtual:vue-inspector-options";
 import UIDevtoolOverlay from "./components/UIDevtoolOverlay.vue";
+import CssPanel from "./components/CssPanel.vue";
 
 import { ref } from "vue";
 const base = inspectorOptions.base;
@@ -17,6 +18,7 @@ export default {
   name: "VueInspectorOverlay",
   components: {
     UIDevtoolOverlay,
+    CssPanel,
   },
   data() {
     return {
@@ -281,6 +283,25 @@ export default {
     style="position: absolute; top: 0px; left: 0px"
   >
     <!-- Overlay -->
+    <CssPanel>
+      <div
+        style="position: absolute; z-index: 11111"
+        ref="tooltip"
+        class="tooltip"
+        v-if="overlayVisible"
+        v-bind="{ [KEY_IGNORE]: 'true' }"
+      >
+        <div class="code-block">
+          <span style="font-weight: 500; font-size: medium">{{
+            linkParams.title
+          }}</span>
+          <span style="font-size: small; opacity: 0.7"
+            >:{{ linkParams.line }}:{{ linkParams.column }}</span
+          >
+          <div class="tip">Click to open in editor</div>
+        </div>
+      </div>
+    </CssPanel>
     <UIDevtoolOverlay v-if="overlayVisible" :current-element="currentElement" />
     <template v-if="false && linkParams">
       <div
@@ -370,6 +391,5 @@ export default {
   margin: 5px 0;
   overflow: auto;
   font-size: 1rem;
-  font-family: monospace;
 }
 </style>

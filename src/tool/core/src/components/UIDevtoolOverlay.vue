@@ -1,9 +1,9 @@
 <template>
   <div class="vue-inspector-size-indicator">
     <svg
-      style="width: 1512px; height: 350px"
-      viewbox="0 0 1512 350"
-      class="_z-[2147483640] overflow-hidden _fixed"
+      :style="{ width: screen.width + 'px', height: screen.height + 'px' }"
+      :viewBox="`${screen.zero} ${screen.zero} ${screen.width} ${screen.height}`"
+      class="z-[2147483640] fixed"
     >
       <line
         stroke="#6171fe"
@@ -66,6 +66,12 @@ export default {
   },
   data() {
     return {
+      screen: {
+        // TODO windoe resize update
+        zero: 1,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      },
       mark: DAFAULT_MARK,
     };
   },
