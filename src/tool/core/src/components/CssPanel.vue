@@ -11,7 +11,8 @@
           <p
             class="inline-flex justify-end place-items-end text-lg text-gray-1"
           >
-            <span class="text-white-1">p</span>
+            <span class="text-white-1">{{ currentTargetParentNode }}</span>
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -24,7 +25,7 @@
                 clipRule="evenodd"
               />
             </svg>
-            <span class="text-white-1">a</span>
+            <span class="text-white-1">{{ currentTargetNode }}</span>
           </p>
         </div>
         <div class="click-off">
@@ -92,6 +93,8 @@ export default {
   data() {
     return {
       cssClassDisplay: [],
+      currentTargetParentNode: "",
+      currentTargetNode: "",
       popperInstance: null,
       mousePosition: {
         x: 0,
@@ -122,8 +125,14 @@ export default {
       }
     },
     onMouseOver(event) {
-      const { classList } = event?.target;
+      const currentElement = event?.target;
+      if (!currentElement) return;
+      const { classList } = currentElement;
+
       this.cssClassDisplay = [...classList];
+      this.currentTargetParentNode =
+        currentElement.parentElement.nodeName.toLowerCase();
+      this.currentTargetNode = currentElement.tagName.toLowerCase();
       this.showTooltip = true;
       this.mousePosition.x = event.clientX;
       this.mousePosition.y = event.clientY;
@@ -209,6 +218,7 @@ export default {
   padding: 5px;
   border-radius: 3px;
   pointer-events: none;
+  z-index: 2147483646;
 }
 .click-off {
   pointer-events: none;

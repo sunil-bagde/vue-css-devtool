@@ -2,8 +2,8 @@
 import inspectorOptions from "virtual:vue-inspector-options";
 import UIDevtoolOverlay from "./components/UIDevtoolOverlay.vue";
 import CssPanel from "./components/CssPanel.vue";
+import "./index.css";
 
-import { ref } from "vue";
 const base = inspectorOptions.base;
 
 const KEY_DATA = "data-v-src-location";
@@ -283,113 +283,9 @@ export default {
     style="position: absolute; top: 0px; left: 0px"
   >
     <!-- Overlay -->
-    <CssPanel>
-      <div
-        style="position: absolute; z-index: 11111"
-        ref="tooltip"
-        class="tooltip"
-        v-if="overlayVisible"
-        v-bind="{ [KEY_IGNORE]: 'true' }"
-      >
-        <div class="code-block">
-          <span style="font-weight: 500; font-size: medium">{{
-            linkParams.title
-          }}</span>
-          <span style="font-size: small; opacity: 0.7"
-            >:{{ linkParams.line }}:{{ linkParams.column }}</span
-          >
-          <div class="tip">Click to open in editor</div>
-        </div>
-      </div>
-    </CssPanel>
+    <CssPanel />
     <UIDevtoolOverlay v-if="overlayVisible" :current-element="currentElement" />
-    <template v-if="false && linkParams">
-      <div
-        ref="floatsRef"
-        class="vue-inspector-floats vue-inspector-card"
-        :style="floatsStyle"
-      >
-        <ul>
-          <li v-for="classN in linkParams.className?.split(' ')">
-            <span style="font-weight: 500; font-size: medium"
-              >.{{ classN }}</span
-            >
-          </li>
-          <li></li>
-        </ul>
-      </div>
-      <div class="vue-inspector-size-indicator" :style="sizeIndicatorStyle" />
-    </template>
   </div>
 </template>
 
-<style scoped>
-.vue-inspector-container {
-  cursor: pointer;
-  position: fixed;
-  text-align: center;
-  z-index: 2147483647;
-  font-family: Arial, Helvetica, sans-serif;
-  border: 2px #ffd664 dashed;
-}
-
-.vue-inspector-card {
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 5px 8px;
-  border-radius: 4px;
-  text-align: left;
-  color: #e9e9e9;
-  font-size: 14px;
-  background-color: #919bfb;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-}
-
-.vue-inspector-card .tip {
-  font-size: 11px;
-  opacity: 0.7;
-}
-
-.vue-inspector-banner {
-  display: none;
-  position: absolute;
-  margin: 0;
-  width: 260px;
-  text-decoration: none;
-}
-
-.vue-inspector-container:hover .vue-inspector-banner {
-  display: block;
-}
-
-.vue-inspector-container--disabled:hover .vue-inspector-banner {
-  display: none;
-}
-
-.vue-inspector-floats {
-  z-index: 2147483647;
-  position: fixed;
-  transform: translateX(-50%);
-  transition: all 0.1s ease-in;
-  pointer-events: none;
-}
-
-.vue-inspector-size-indicator {
-  z-index: 2147483646;
-  position: fixed;
-  background-color: #919bfb25;
-  border: 2px #919bfb25 dashed;
-  border-radius: 5px;
-  transition: all 0.1s ease-in;
-  pointer-events: none;
-}
-.code-block {
-  font-size: 12px;
-  color: #e9e9e9;
-  background-color: #919bfb;
-  padding: 5px;
-  border-radius: 4px;
-  margin: 5px 0;
-  overflow: auto;
-  font-size: 1rem;
-}
-</style>
+<style></style>

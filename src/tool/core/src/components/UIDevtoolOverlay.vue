@@ -3,7 +3,6 @@
     <svg
       :style="{ width: screen.width + 'px', height: screen.height + 'px' }"
       :viewBox="`${screen.zero} ${screen.zero} ${screen.width} ${screen.height}`"
-      class="z-[2147483640] fixed"
     >
       <line
         stroke="#6171fe"
@@ -111,7 +110,7 @@ export default {
 
 <style scoped>
 .vue-inspector-size-indicator {
-  z-index: 2147483646;
+  z-index: 2147483630;
   position: fixed;
   transition: all 0.1s ease-in;
   pointer-events: none;
